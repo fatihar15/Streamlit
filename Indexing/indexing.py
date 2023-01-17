@@ -16,6 +16,7 @@ if document is None:
     st.warning("Please select a file")
 else:
     text = document.read().decode()
+    print(text)
     word_list = word_tokenize(text)
     stemmer = PorterStemmer ()
     stemmed_words = [stemmer.stem(word) for word in word_list]
@@ -40,7 +41,7 @@ for word in word_list:
 
 inverted_index = defaultdict(set)
 
-for docid, c in enumerate (text):
+for docid, c in enumerate (filtered_list):
   for sent in sent_tokenize(c):
     for word in word_tokenize(sent):
       word_lower = word.lower()
@@ -48,5 +49,5 @@ for docid, c in enumerate (text):
         word_lower = word.lower()
         word_stem = stemmer.stem(word_lower)
         inverted_index[word_stem].add(docid);
-len(inverted_index.keys())
-inverted_index
+st.write("length of inverted_index.keys() :", len(inverted_index.keys()))
+st.write("inverted_index :", inverted_index)
