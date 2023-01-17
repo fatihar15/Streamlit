@@ -19,12 +19,12 @@ else:
     word_list = word_tokenize(text)
     stemmer = PorterStemmer ()
     stemmed_words = [stemmer.stem(word) for word in word_list]
+    word_list = stemmed_words
 
 
 stop_words = set(stopwords.words("english"))
 stop_words.add(".")
 stop_words.add(",")
-stop_words.add("'s")
 stop_words.add("'s")
 stop_words.add("/")
 stop_words.add("%")
