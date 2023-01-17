@@ -35,9 +35,12 @@ stop_words.add(")")
 
 filtered_list = [];
 
-for word in word_list:
-  if word.casefold() not in stop_words:
-    filtered_list.append(word)
+if not word_list:
+    st.warning("Please upload a non-empty file")
+else:
+    for word in word_list:
+        if word.casefold() not in stop_words:
+            filtered_list.append(word)
 
 inverted_index = defaultdict(set)
 
